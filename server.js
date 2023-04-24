@@ -12,7 +12,7 @@ app.use(express.json());
 app.use("*", cors());
 
 app.get("/", (req, res) => {
-  res.send("Order API is Running");
+	res.send("Order API is Running");
 });
 
 app.use("/order", orderRoutes);
