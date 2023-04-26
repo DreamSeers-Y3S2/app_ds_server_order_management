@@ -28,7 +28,7 @@ const createOrder = asyncHandler(async (req, res) => {
 		});
 
 		while (i < items.length) {
-			products = products + items[i].productName;
+			products = products + items[i].productName + " : " + items[i].quantity;
 			if (i != items.length - 1) {
 				products = products + " , ";
 			}
