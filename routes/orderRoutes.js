@@ -10,5 +10,6 @@ router.route("/get-customer-orders/:id").get(protectCustomer, getCustomerOrders)
 router.route("/get-admin-orders").get(protect, getAdminOrders);
 
 router.route("/order-admin/:id").put(protect, updateOrderStatus);
+router.route("/order-customer-status/:id").put(protectCustomer, updateOrderStatus);
 
 module.exports = router;
