@@ -2,16 +2,19 @@ const Order = require("../models/orderModel");
 const Cart = require("../models/cartModel");
 const asyncHandler = require("express-async-handler");
 
+// Get all orders of a particular customer
 const getCustomerOrders = asyncHandler(async (req, res) => {
 	const items = await Order.find({ customer: req.params.id });
 	res.json(items);
 });
 
+// Get all the orders by admin
 const getAdminOrders = asyncHandler(async (req, res) => {
 	const items = await Order.find();
 	res.json(items);
 });
 
+// Create a order
 const createOrder = asyncHandler(async (req, res) => {
 	var status = "pending";
 	var products = "";
@@ -27,6 +30,7 @@ const createOrder = asyncHandler(async (req, res) => {
 			customer: customer,
 		});
 
+		// Add the cart items to order
 		while (i < items.length) {
 			products = products + items[i].productName + " : " + items[i].quantity;
 			if (i != items.length - 1) {
@@ -34,7 +38,7 @@ const createOrder = asyncHandler(async (req, res) => {
 			}
 			i++;
 		}
-
+		// Save the order
 		const order = new Order({
 			customer,
 			products,
@@ -49,6 +53,7 @@ const createOrder = asyncHandler(async (req, res) => {
 	}
 });
 
+// Update the order status
 const updateOrderStatus = asyncHandler(async (req, res) => {
 	const { status } = req.body;
 

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
+// Order model to store orders
 const orderSchema = mongoose.Schema({
 	customer: {
 		type: mongoose.Schema.Types.ObjectId,

@@ -5,6 +5,7 @@ const { protectCustomer } = require("../middleware/authCustomerMiddleware");
 const { protect } = require("../middleware/authAdminMiddleware");
 const router = express.Router();
 
+// Routes for the order management service
 router.route("/create").post(protectCustomer, createOrder);
 router.route("/get-customer-orders/:id").get(protectCustomer, getCustomerOrders);
 router.route("/get-admin-orders").get(protect, getAdminOrders);

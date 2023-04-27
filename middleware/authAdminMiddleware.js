@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const Admin = require("../models/adminModel.js");
 const asyncHandler = require("express-async-handler");
 
+// Authorize routes to enable only the authorized users to use
 const protect = asyncHandler(async (req, res, next) => {
 	let token;
 
